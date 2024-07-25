@@ -4,6 +4,7 @@ import kr.hs.dgsw.summer.web.domain.Post;
 import kr.hs.dgsw.summer.web.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class BoardServiceImpl implements BoardService {
     public Post addPost(Post post) {
         post.setId(++idPool);
 
-        list.add(post);
+        list.addFirst(post);
 
         log.info("LIST - {}", list);
 
@@ -50,7 +51,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public void delete(int id) {
-
+        list.removeIf(post -> post.getId() == id);
     }
 
 }
