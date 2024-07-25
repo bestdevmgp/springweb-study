@@ -73,4 +73,27 @@ public class BoardController {
 
         return "redirect:/board/list";
     }
+
+    @GetMapping("/board/update/{id}")
+    public String update(@PathVariable("id") int id, Model model) {
+        Post post = boardService.read(id);
+        model.addAttribute("post", post);
+        return "update";
+    }
+
+    @PostMapping("/board/update.do")
+    public String updateDo(
+            @RequestParam("id") int id,
+            @RequestParam("title") String title,
+            @RequestParam("content") String content,
+            @RequestParam("writer") String writer) {
+        Post post = Post.builder()
+                .id(id)
+                .title(title)
+                .content(content)
+                .writer(writer)
+                .build();
+        boardService.update(post);
+        return "redirect:/board/list";
+    }
 }

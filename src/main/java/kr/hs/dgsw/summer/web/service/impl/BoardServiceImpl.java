@@ -45,8 +45,15 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Post update(Post post) {
-        return null;
+    public void update(Post updatedPost) {
+        list.stream()
+                .filter(post -> post.getId() == updatedPost.getId())
+                .findFirst()
+                .ifPresent(post -> {
+                    post.setTitle(updatedPost.getTitle());
+                    post.setContent(updatedPost.getContent());
+                    post.setWriter(updatedPost.getWriter());
+                });
     }
 
     @Override

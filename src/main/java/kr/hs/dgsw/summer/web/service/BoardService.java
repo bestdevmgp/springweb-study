@@ -12,7 +12,7 @@ public interface BoardService {
 
     Post read(int id);
 
-    Post update(Post post);
+    void update(Post post);
 
     void delete(int id);
 }
