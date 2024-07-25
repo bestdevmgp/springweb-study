@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>게시판</title>
-    <link rel="stylesheet" href="/css/board.css">
+    <link href="/css/list.css" rel="stylesheet">
 </head>
 <body>
 <h1>게시판</h1>
-
 <div class="write_btn">
     <a href="/board/write"><button>글쓰기</button></a>
 </div>
-
 <table class="list">
     <thead>
     <tr>
@@ -21,7 +19,8 @@
     </thead>
     <tbody>
     <tr th:each="post : ${list}">
-        <td><a th:href="@{/board/detail(id=${post.id})}"><span th:text="${post.title}"></span></a>
+        <td>
+            <a th:href="@{/board/detail/{id}(id=${post.id})}"><span th:text="${post.title}"></span></a>
         </td>
         <td th:text="${post.writer}"></td>
     </tr>
