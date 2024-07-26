@@ -71,6 +71,7 @@ public class BoardController {
         return detail(model, id);
     }
 
+
     @GetMapping("/board/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         boardService.delete(id);
@@ -82,7 +83,7 @@ public class BoardController {
     public String update(@PathVariable("id") int id, Model model) {
         Post post = boardService.read(id);
         model.addAttribute("post", post);
-        return "update";
+        return "modify";
     }
 
     @PostMapping("/board/update.do")
