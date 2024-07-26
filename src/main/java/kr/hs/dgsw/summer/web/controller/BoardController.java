@@ -87,7 +87,7 @@ public class BoardController {
     }
 
     @PostMapping("/board/update.do")
-    public String updateDo(
+    public String modifyDo(
             @RequestParam("id") int id,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
@@ -106,4 +106,5 @@ public class BoardController {
         boardService.update(post);
         return "redirect:/board/list";
     }
+
 }
